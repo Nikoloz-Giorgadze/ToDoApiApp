@@ -29,5 +29,12 @@ namespace ToDoApi.Controllers
             var id = await _service.Create(ownerId, model);
             return Ok(id);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAll(int toDoId)
+        {
+            int ownerId = GetOwnerId();
+            var result = await _service.GetAll(ownerId, toDoId);
+            return Ok(result);
+        }
     }
 }
